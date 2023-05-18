@@ -282,9 +282,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aede91f9cdc4f9429ad8a2d51c1ac78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 8
   charCon: {fileID: 34360461}
   camTrans: {fileID: 1097586309}
+  mouseSensitivity: 1
+  invertX: 0
+  invertY: 0
 --- !u!1 &324814199
 GameObject:
   m_ObjectHideFlags: 0
