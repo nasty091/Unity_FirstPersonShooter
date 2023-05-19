@@ -31,14 +31,12 @@ public class PlayerController : MonoBehaviour
         Vector3 horiMove = transform.right * Input.GetAxis("Horizontal");
 
         moveInput = vertMove + horiMove;
-        moveInput.Normalize(); // Set the value of moveInput = 1
+        //Debug.Log("moveInput before Normalize: " + moveInput.x + " " + moveInput.y + " " + moveInput.z);
+        moveInput.Normalize(); // Set the value of moveInput = 1 or smaller 
+        //Debug.Log("moveInput after Normalize: " + moveInput.x + " " + moveInput.y + " " + moveInput.z);
         moveInput = moveInput * moveSpeed;
 
         charCon.Move(moveInput * Time.deltaTime);
-
-        //moveInput = (vertMove + horiMove) * moveSpeed * Time.deltaTime;
-        //moveInput.Normalize();
-        //charCon.Move(moveInput);
 
         //Control camera rotation
         Vector2 mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSensitivity;
