@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed, gravityModifier;
+    public float moveSpeed, gravityModifier, jumpPower;
     public CharacterController charCon;
 
     private Vector3 moveInput;
@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     public bool invertX;
     public bool invertY;
 
+    private bool canJump;
+    public Transform groundCheckPoint;
+    public LayerMask whatIsGround;
+    private bool abc;
     void Start()
     {
         
@@ -41,10 +45,18 @@ public class PlayerController : MonoBehaviour
         moveInput.y = yStore;
 
         moveInput.y += Physics.gravity.y * gravityModifier * Time.deltaTime;
-        
+
         if (charCon.isGrounded)
         {
             moveInput.y = Physics.gravity.y * gravityModifier * Time.deltaTime;
+        }
+
+        //Handle Jumping
+        canJump = Physics.OverlapSphere(groundCheckPoint.position, .25f, whatIsGround).Length > 0;
+       
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        {
+            moveInput.y = jumpPower;
         }
 
         charCon.Move(moveInput * Time.deltaTime);
