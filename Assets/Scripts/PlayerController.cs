@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheckPoint;
     public LayerMask whatIsGround;
 
+    public Animator anim;
     void Start()
     {
         
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
         //moveInput.x = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         //moveInput.z = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
-        //Store y velocity, because at line 36 moveInput.y will be 0 so yStore will back up the value of moveInput.y
+        //Store y velocity
         float yStore = moveInput.y;
        
         //Set up movement and can change direction
@@ -90,5 +91,9 @@ public class PlayerController : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + mouseInput.x, transform.rotation.eulerAngles.z);
         camTrans.rotation = Quaternion.Euler(camTrans.rotation.eulerAngles + new Vector3(-mouseInput.y, 0f, 0f));
+
+        //Movement Bobbing Use Animation
+        anim.SetBool("onGround", canJump);
+        anim.SetFloat("moveSpeed", moveInput.magnitude);
     }
 }
