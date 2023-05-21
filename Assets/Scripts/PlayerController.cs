@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed, gravityModifier, jumpPower;
+    public float moveSpeed, gravityModifier, jumpPower, runSpeed;
     public CharacterController charCon;
 
     private Vector3 moveInput;
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool canJump, canDoubleJump;
     public Transform groundCheckPoint;
     public LayerMask whatIsGround;
-    private bool abc;
+
     void Start()
     {
         
@@ -39,7 +39,16 @@ public class PlayerController : MonoBehaviour
        
         moveInput = vertMove + horiMove;//moveInput.y = 0 Because vertMove and horiMove just change the x and z
         moveInput.Normalize(); // Set the value of moveInput = 1 or smaller 
-        moveInput = moveInput * moveSpeed;
+
+        //Running
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            moveInput = moveInput * runSpeed;
+        }
+        else
+        {
+            moveInput = moveInput * moveSpeed;
+        }
 
         //Set up gravity for player
         moveInput.y = yStore;
