@@ -45,10 +45,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             moveInput = moveInput * runSpeed;
+            anim.SetBool("isRun", true);
         }
         else
         {
             moveInput = moveInput * moveSpeed;
+            anim.SetBool("isRun", false);
         }
 
         //Set up gravity for player
@@ -93,6 +95,7 @@ public class PlayerController : MonoBehaviour
         camTrans.rotation = Quaternion.Euler(camTrans.rotation.eulerAngles + new Vector3(-mouseInput.y, 0f, 0f));
 
         //Movement Bobbing Use Animation
+        //Debug.Log(moveInput.magnitude); 
         anim.SetBool("onGround", canJump);
         anim.SetFloat("moveSpeed", moveInput.magnitude);
     }
