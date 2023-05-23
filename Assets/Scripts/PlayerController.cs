@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
 
     public Animator anim;
+
+    public GameObject bullet;
+    public Transform firePoint;
+
     void Start()
     {
         
@@ -93,6 +97,12 @@ public class PlayerController : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + mouseInput.x, transform.rotation.eulerAngles.z);
         camTrans.rotation = Quaternion.Euler(camTrans.rotation.eulerAngles + new Vector3(-mouseInput.y, 0f, 0f));
+
+        //Handle Shooting
+        if(Input.GetMouseButtonDown(0))
+        {
+            Instantiate(bullet, firePoint.position, firePoint.rotation);
+        }
 
         //Movement Bobbing Use Animation
         //Debug.Log(moveInput.magnitude); 
