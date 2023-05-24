@@ -41,8 +41,9 @@ public class PlayerController : MonoBehaviour
         //Set up movement and can change direction
         Vector3 vertMove = transform.forward * Input.GetAxis("Vertical");
         Vector3 horiMove = transform.right * Input.GetAxis("Horizontal");
-       
+
         moveInput = vertMove + horiMove;//moveInput.y = 0 Because vertMove and horiMove just change the x and z
+        Debug.Log(moveInput);
         moveInput.Normalize(); // Set the value of moveInput = 1 or smaller 
 
         //Running
