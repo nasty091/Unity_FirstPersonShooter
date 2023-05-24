@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
             moveInput = moveInput * runSpeed;
             anim.SetBool("isRun", true);
         }
-        else
+        else//Movement
         {
             moveInput = moveInput * moveSpeed;
             anim.SetBool("isRun", false);
