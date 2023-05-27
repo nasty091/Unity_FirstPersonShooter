@@ -22,7 +22,7 @@ public class test : MonoBehaviour
     {
         if(other.tag == "DirectionPoint")
         {
-            //transform.rotation.;
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 90f, transform.rotation.eulerAngles.z);
         }
     }
 }
