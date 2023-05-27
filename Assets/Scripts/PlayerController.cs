@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
         Vector3 horiMove = transform.right * Input.GetAxis("Horizontal");
 
         moveInput = vertMove + horiMove;//moveInput.y = 0 Because vertMove and horiMove just change the x and z
-        Debug.Log(moveInput);
         moveInput.Normalize(); // Set the value of moveInput = 1 or smaller 
 
         //Running
@@ -81,7 +80,7 @@ public class PlayerController : MonoBehaviour
             moveInput.y = jumpPower;
             canDoubleJump = false;
         }
-
+        Debug.Log(moveInput);
         charCon.Move(moveInput * Time.deltaTime);
 
         //Control camera rotation
@@ -123,4 +122,6 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("onGround", canJump);
         anim.SetFloat("moveSpeed", moveInput.magnitude);
     }
+
+   
 }

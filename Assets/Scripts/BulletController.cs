@@ -31,5 +31,10 @@ public class BulletController : MonoBehaviour
     {
         Destroy(gameObject);
         Instantiate(impactEffect, transform.position + (transform.forward * (-moveSpeed * Time.deltaTime)), transform.rotation);
+
+        if(other.tag == "Enemy")
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
