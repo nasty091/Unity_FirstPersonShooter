@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             moveInput.y = jumpPower;
             canDoubleJump = false;
         }
-        Debug.Log(moveInput);
+        //Debug.Log(moveInput);
         charCon.Move(moveInput * Time.deltaTime);
 
         //Control camera rotation

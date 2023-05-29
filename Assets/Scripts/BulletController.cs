@@ -9,10 +9,13 @@ public class BulletController : MonoBehaviour
     public Rigidbody theRB;
 
     public GameObject impactEffect;
+
+    public int damage = 1;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -34,7 +37,8 @@ public class BulletController : MonoBehaviour
 
         if(other.tag == "Enemy")
         {
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<EnemyHealthController>().DamgeEnemy(damage);
+            //Destroy(other.gameObject);
         }
     }
 }
