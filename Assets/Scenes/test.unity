@@ -1589,7 +1589,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1027582513
 MonoBehaviour:
@@ -1605,7 +1605,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   theRB: {fileID: 1027582512}
-  target: {fileID: 34360462}
+  distanceToChase: 10
+  distanceToLose: 15
 --- !u!1 &1075779596
 GameObject:
   m_ObjectHideFlags: 0

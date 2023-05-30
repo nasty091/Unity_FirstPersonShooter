@@ -7,7 +7,11 @@ public class EnemyController : MonoBehaviour
     public float moveSpeed;
     public Rigidbody theRB;
 
-    public Transform target;
+    private bool chasing;
+    public float distanceToChase = 10f, distanceToLose = 15f;
+
+    private Vector3 targetPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +21,26 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(PlayerController.instance.gameObject.transform.position);
+        targetPoint = PlayerController.instance.transform.position;
+        Debug.Log(targetPoint.y);
+        targetPoint.y = 0f;
 
-        theRB.velocity = transform.forward * moveSpeed; 
+        if (!chasing)
+        {
+            if (Vector3.Distance(transform.position, targetPoint) < distanceToChase)
+            {
+                chasing = true;
+            }
+        }
+        else
+        {
+            transform.LookAt(targetPoint);
+            theRB.velocity = transform.forward * moveSpeed;
+
+            if(Vector3.Distance(transform.position, targetPoint) > distanceToLose)
+            {
+                chasing = false;
+            }
+        }
     }
 }
