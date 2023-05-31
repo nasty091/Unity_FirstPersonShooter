@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class EnemyController : MonoBehaviour
 
     private Vector3 targetPoint;
 
+    public NavMeshAgent agent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +25,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         targetPoint = PlayerController.instance.transform.position;
-        Debug.Log(targetPoint.y);
-        targetPoint.y = 0f;
+        targetPoint.y = transform.position.y;
 
         if (!chasing)
         {
@@ -34,8 +36,11 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            transform.LookAt(targetPoint);
-            theRB.velocity = transform.forward * moveSpeed;
+            //transform.LookAt(targetPoint);
+            //theRB.velocity = transform.forward * moveSpeed;
+
+            //agent.destination = targetPoint;
+            agent.SetDestination(targetPoint);
 
             if(Vector3.Distance(transform.position, targetPoint) > distanceToLose)
             {
