@@ -1588,11 +1588,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586d6dccbdce50d45aca566c501c34fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  theRB: {fileID: 0}
   distanceToChase: 10
   distanceToLose: 15
+  distanceToStop: 2
   agent: {fileID: 1027582514}
+  keepChasingTime: 5
 --- !u!195 &1027582514
 NavMeshAgent:
   m_ObjectHideFlags: 0
