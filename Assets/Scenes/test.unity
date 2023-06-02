@@ -1595,6 +1595,9 @@ MonoBehaviour:
   distanceToStop: 2
   agent: {fileID: 1027582514}
   keepChasingTime: 5
+  bullet: {fileID: 6433023140555006242, guid: 80bb51ab3467ee74f8998b2244419985, type: 3}
+  firePoint: {fileID: 1749133324}
+  fireRate: 3
 --- !u!195 &1027582514
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1658,7 +1661,6 @@ GameObject:
   - component: {fileID: 1077238349}
   - component: {fileID: 1077238352}
   - component: {fileID: 1077238351}
-  - component: {fileID: 1077238350}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1680,19 +1682,6 @@ Transform:
   m_Father: {fileID: 1027582511}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1077238350
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1077238348}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1077238351
 MeshRenderer:
   m_ObjectHideFlags: 0
