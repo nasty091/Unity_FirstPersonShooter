@@ -61,6 +61,7 @@ public class EnemyController : MonoBehaviour
             //transform.LookAt(targetPoint);
             //theRB.velocity = transform.forward * moveSpeed;
 
+            //Distance to stop in front of the player
             if (Vector3.Distance(transform.position, targetPoint) > 2)
             {
                 //agent.SetDestination(targetPoint);
@@ -71,6 +72,7 @@ public class EnemyController : MonoBehaviour
                 agent.destination = transform.position;
             }
 
+            //Distance to lose the player
             if(Vector3.Distance(transform.position, targetPoint) > distanceToLose)
             {
                 chasing = false;
@@ -78,7 +80,7 @@ public class EnemyController : MonoBehaviour
                 chaseCounter = keepChasingTime;
             }
 
-
+            //Time to shoot and Time to wait between shots
             if (shotWaitCounter > 0)
             {
                 shotWaitCounter -= Time.deltaTime;
@@ -97,7 +99,21 @@ public class EnemyController : MonoBehaviour
                     if (fireCount <= 0)
                     {
                         fireCount = fireRate;
-                        Instantiate(bullet, firePoint.position, firePoint.rotation);
+
+                        firePoint.LookAt(PlayerController.instance.transform.position + new Vector3(0f, 1.5f, 0f));
+
+                        //Check the angle to the player
+                        Vector3 targetDir = PlayerController.instance.transform.position - transform.position;
+                        float angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);
+                        Debug.Log(angle);
+                        if(Mathf.Abs(angle) < 30)
+                        {
+                            Instantiate(bullet, firePoint.position, firePoint.rotation);
+                        }
+                        else
+                        {
+                            shotWaitCounter = waitBetweenShots;
+                        }
                     }
                     agent.destination = transform.position;
                 }

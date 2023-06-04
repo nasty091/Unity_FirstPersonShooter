@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    public Rigidbody theRB;
-    public float moveSpeed;
+    public GameObject target;
 
     void Start()
     {
@@ -15,14 +14,17 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        theRB.velocity = transform.forward * moveSpeed;
+        //Vector3 targetDir = target.transform.position - transform.position;
+        //float angle = Vector3.SignedAngle(targetDir, transform.forward, transform.up);
+        //Debug.Log("transform.forward: " + transform.forward);
+        //Debug.Log("transform.right: " + transform.right);
+        //Debug.Log("transform.right: " + transform.up);
+        //Debug.Log("Horizontal: " +Input.GetAxis("Horizontal"));
+        //Debug.Log("Vertical: " + Input.GetAxis("Vertical"));
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "DirectionPoint")
-        {
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 90f, transform.rotation.eulerAngles.z);
-        }
+   
     }
 }
