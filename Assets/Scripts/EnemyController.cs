@@ -118,7 +118,7 @@ public class EnemyController : MonoBehaviour
                         //Check the angle to the player
                         Vector3 targetDir = PlayerController.instance.transform.position - transform.position;
                         float angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);
-                        Debug.Log(angle);
+                        //Debug.Log(angle);
                         if(Mathf.Abs(angle) < 30)
                         {
                             Instantiate(bullet, firePoint.position, firePoint.rotation);

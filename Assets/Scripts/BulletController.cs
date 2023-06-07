@@ -34,16 +34,22 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Enemy" && damageEnemy)
+        if(other.gameObject.tag == "Enemy" && damageEnemy)
         {
-            other.gameObject.GetComponent<EnemyHealthController>().DamgeEnemy(damage);
             //Destroy(other.gameObject);
+            other.gameObject.GetComponent<EnemyHealthController>().DamgeEnemy(damage);
+        }
+
+        if(other.gameObject.tag == "HeadShot" && damageEnemy)
+        {
+            other.transform.parent.gameObject.GetComponent<EnemyHealthController>().DamgeEnemy(damage * 5);
         }
 
         if(other.tag == "Player" && damagePlayer)
         {
             Debug.Log("Hit Player " + transform.position);
         }
+
         Destroy(gameObject);
         Instantiate(impactEffect, transform.position + (transform.forward * (-moveSpeed * Time.deltaTime)), transform.rotation);
 
