@@ -36,9 +36,11 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Get the current position of player
         targetPoint = PlayerController.instance.transform.position;
         targetPoint.y = transform.position.y;
 
+        //Stop chasing
         if (!chasing)
         {
             if (Vector3.Distance(transform.position, targetPoint) < distanceToChase)
@@ -47,8 +49,10 @@ public class EnemyController : MonoBehaviour
 
                 shootTimeCounter = timeToShoot;
                 shotWaitCounter = waitBetweenShots;
+                fireCount = fireRate;
             }
 
+            //Keep chasing in chaseCounter's time
             if(chaseCounter > 0)
             {
                 chaseCounter -= Time.deltaTime;
@@ -58,6 +62,7 @@ public class EnemyController : MonoBehaviour
                 }
             }
 
+            //remainingDistance is the distance between enemy and target
             if(agent.remainingDistance < .25f)
             {
                 anim.SetBool("isMoving", false);
@@ -67,7 +72,7 @@ public class EnemyController : MonoBehaviour
                 anim.SetBool("isMoving", true);
             }
         }
-        else
+        else //Keep chasing
         {
             //transform.LookAt(targetPoint);
             //theRB.velocity = transform.forward * moveSpeed;
@@ -112,7 +117,7 @@ public class EnemyController : MonoBehaviour
                     if (fireCount <= 0)
                     {
                         fireCount = fireRate;
-
+                        //Make firePoint to look at the Player's position
                         firePoint.LookAt(PlayerController.instance.transform.position + new Vector3(0f, 1.5f, 0f));
 
                         //Check the angle to the player
@@ -140,6 +145,5 @@ public class EnemyController : MonoBehaviour
             }
 
         }
-        Debug.Log(agent.remainingDistance);
     }
 }
