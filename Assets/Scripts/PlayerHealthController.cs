@@ -44,12 +44,16 @@ public class PlayerHealthController : MonoBehaviour
             if (currentHealth <= 0)
             {
                 gameObject.SetActive(false);
-            }
 
-            invincCounter = invincibleLength;
+                currentHealth = 0;
+
+                GameManager.instance.PlayerDied();
+            }
 
             UIController.instance.healthSlider.value = currentHealth;
             UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
+
+            invincCounter = invincibleLength;
         }
     }
 }

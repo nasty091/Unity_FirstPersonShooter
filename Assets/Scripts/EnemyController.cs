@@ -110,36 +110,39 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                shootTimeCounter -= Time.deltaTime;
-                if (shootTimeCounter > 0)
+                if (PlayerController.instance.gameObject.activeInHierarchy)
                 {
-                    fireCount -= Time.deltaTime;
-                    if (fireCount <= 0)
+                    shootTimeCounter -= Time.deltaTime;
+                    if (shootTimeCounter > 0)
                     {
-                        fireCount = fireRate;
-                        //Make firePoint to look at the Player's position
-                        firePoint.LookAt(PlayerController.instance.transform.position + new Vector3(0f, 1.5f, 0f));
-
-                        //Check the angle to the player
-                        Vector3 targetDir = PlayerController.instance.transform.position - transform.position;
-                        float angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);
-                        //Debug.Log(angle);
-                        if(Mathf.Abs(angle) < 30)
+                        fireCount -= Time.deltaTime;
+                        if (fireCount <= 0)
                         {
-                            Instantiate(bullet, firePoint.position, firePoint.rotation);
+                            fireCount = fireRate;
+                            //Make firePoint to look at the Player's position
+                            firePoint.LookAt(PlayerController.instance.transform.position + new Vector3(0f, 1.5f, 0f));
 
-                            anim.SetTrigger("fireShot");
+                            //Check the angle to the player
+                            Vector3 targetDir = PlayerController.instance.transform.position - transform.position;
+                            float angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);
+                            //Debug.Log(angle);
+                            if (Mathf.Abs(angle) < 30)
+                            {
+                                Instantiate(bullet, firePoint.position, firePoint.rotation);
+
+                                anim.SetTrigger("fireShot");
+                            }
+                            else
+                            {
+                                shotWaitCounter = waitBetweenShots;
+                            }
                         }
-                        else
-                        {
-                            shotWaitCounter = waitBetweenShots;
-                        }
+                        agent.destination = transform.position;
                     }
-                    agent.destination = transform.position;
-                }
-                else
-                {
-                    shotWaitCounter = waitBetweenShots;
+                    else
+                    {
+                        shotWaitCounter = waitBetweenShots;
+                    }
                 }
                 anim.SetBool("isMoving", false);
             }
