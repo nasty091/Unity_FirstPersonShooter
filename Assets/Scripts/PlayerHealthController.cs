@@ -56,4 +56,17 @@ public class PlayerHealthController : MonoBehaviour
             invincCounter = invincibleLength;
         }
     }
+
+    public void HealPlayer(int healAmount)
+    {
+        currentHealth += healAmount;
+        
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+        UIController.instance.healthSlider.value = currentHealth;
+        UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
+    }
 }
