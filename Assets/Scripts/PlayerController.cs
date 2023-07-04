@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public Transform firePoint;
 
+    public Gun activeGun;
+
     private void Awake()
     {
         instance = this;
@@ -120,7 +122,8 @@ public class PlayerController : MonoBehaviour
                 firePoint.LookAt(camTrans.position + (camTrans.forward * 30f));
             }
 
-            Instantiate(bullet, firePoint.position, firePoint.rotation);
+            //Instantiate(bullet, firePoint.position, firePoint.rotation);
+            FireShot();
         }
 
         //Movement Bobbing Use Animation
@@ -129,5 +132,9 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("moveSpeed", moveInput.magnitude);
     }
 
+    public void FireShot()
+    {
+        Instantiate(activeGun.bullet, firePoint.position, firePoint.rotation);
+    }
    
 }
