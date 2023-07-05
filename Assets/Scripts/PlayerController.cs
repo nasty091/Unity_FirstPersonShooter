@@ -107,7 +107,8 @@ public class PlayerController : MonoBehaviour
         camTrans.rotation = Quaternion.Euler(camTrans.rotation.eulerAngles + new Vector3(-mouseInput.y, 0f, 0f));
 
         //Handle Shooting
-        if(Input.GetMouseButtonDown(0))
+        //single shots
+        if(Input.GetMouseButtonDown(0) && activeGun.fireCounter <= 0)
         {
             RaycastHit hit;
             if(Physics.Raycast(camTrans.position, camTrans.forward, out hit, 50f))
@@ -126,6 +127,7 @@ public class PlayerController : MonoBehaviour
             FireShot();
         }
 
+        //repeats shots
         if (Input.GetMouseButton(0) && activeGun.canAutoFire)
         {
             if(activeGun.fireCounter <= 0)
