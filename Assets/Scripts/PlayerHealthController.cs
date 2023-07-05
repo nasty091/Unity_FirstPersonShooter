@@ -23,7 +23,7 @@ public class PlayerHealthController : MonoBehaviour
 
         UIController.instance.healthSlider.maxValue = maxHealth;
         UIController.instance.healthSlider.value = currentHealth;
-        UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
+        UIController.instance.healthText.text = "HEALTH: " + currentHealth + "/" + maxHealth;
     }
 
     // Update is called once per frame
@@ -51,7 +51,7 @@ public class PlayerHealthController : MonoBehaviour
             }
 
             UIController.instance.healthSlider.value = currentHealth;
-            UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
+            UIController.instance.healthText.text = "HEALTH: " + currentHealth + "/" + maxHealth;
 
             invincCounter = invincibleLength;
         }
@@ -67,6 +67,6 @@ public class PlayerHealthController : MonoBehaviour
         }
 
         UIController.instance.healthSlider.value = currentHealth;
-        UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
+        UIController.instance.healthText.text = "HEALTH: " + currentHealth + "/" + maxHealth;
     }
 }

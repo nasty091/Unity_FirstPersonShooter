@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        UIController.instance.ammoText.text = "Ammo: " + activeGun.currentAmmo;
+        UIController.instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
     }
 
     void Update()
@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
 
             activeGun.fireCounter = activeGun.fireRate;
 
-            UIController.instance.ammoText.text = "Ammo: " + activeGun.currentAmmo;
+            UIController.instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
         }
     }
    
