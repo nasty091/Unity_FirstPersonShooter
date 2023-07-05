@@ -126,6 +126,14 @@ public class PlayerController : MonoBehaviour
             FireShot();
         }
 
+        if (Input.GetMouseButton(0) && activeGun.canAutoFire)
+        {
+            if(activeGun.fireCounter <= 0)
+            {
+                FireShot();
+            }
+        }
+
         //Movement Bobbing Use Animation
         //Debug.Log(moveInput.magnitude); 
         anim.SetBool("onGround", canJump);
@@ -135,6 +143,8 @@ public class PlayerController : MonoBehaviour
     public void FireShot()
     {
         Instantiate(activeGun.bullet, firePoint.position, firePoint.rotation);
+
+        activeGun.fireCounter = activeGun.fireRate;
     }
    
 }
