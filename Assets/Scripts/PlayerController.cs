@@ -37,10 +37,12 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        activeGun = allGuns[currentGun];
-        activeGun.gameObject.SetActive(true);
+        //activeGun = allGuns[currentGun];
+        //activeGun.gameObject.SetActive(true);
 
-        UIController.instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
+        //UIController.instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
+        currentGun--;
+        SwitchGun();
     }
 
     void Update()
@@ -184,5 +186,8 @@ public class PlayerController : MonoBehaviour
         activeGun.gameObject.SetActive(true);
 
         UIController.instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
+
+        //firePoint is general firepoint and activeGun.firepoint is an invidual firepoint of gun 
+        firePoint.position = activeGun.firepoint.position;
     }
 }
