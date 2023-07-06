@@ -299,9 +299,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   anim: {fileID: 34360464}
-  bullet: {fileID: 0}
   firePoint: {fileID: 1075779597}
   activeGun: {fileID: 302955082}
+  allGuns:
+  - {fileID: 302955082}
+  - {fileID: 2135380793}
+  - {fileID: 1188201484}
+  currentGun: 2
 --- !u!95 &34360464
 Animator:
   serializedVersion: 3
@@ -617,7 +621,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &302955081
 Transform:
   m_ObjectHideFlags: 0
