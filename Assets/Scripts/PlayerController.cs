@@ -150,6 +150,18 @@ public class PlayerController : MonoBehaviour
             SwitchGun();
         }
 
+        //Zoom Camera in
+        if (Input.GetMouseButtonDown(1))
+        {
+            CameraController.instance.ZoomIn(activeGun.zoomAmount);
+        }
+
+        //Zoom Camera out
+        if (Input.GetMouseButtonUp(1))
+        {
+            CameraController.instance.ZoomOut();
+        }
+
         //Movement Bobbing Use Animation
         //Debug.Log(moveInput.magnitude); 
         anim.SetBool("onGround", canJump);
