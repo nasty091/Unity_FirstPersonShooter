@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject muzzleFlash;
 
+    public AudioSource footstepFast, footstepSlow;
+
     private void Awake()
     {
         instance = this;
@@ -101,11 +103,15 @@ public class PlayerController : MonoBehaviour
                 moveInput.y = jumpPower;
 
                 canDoubleJump = true;
+
+                AudioManager.instance.PlaySFX(8);
             }
             else if (canDoubleJump && Input.GetKeyDown(KeyCode.Space))
             {
                 moveInput.y = jumpPower;
                 canDoubleJump = false;
+
+                AudioManager.instance.PlaySFX(8);
             }
             //Debug.Log(moveInput);
             charCon.Move(moveInput * Time.deltaTime);

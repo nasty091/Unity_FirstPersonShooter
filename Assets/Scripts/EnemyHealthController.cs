@@ -25,6 +25,8 @@ public class EnemyHealthController : MonoBehaviour
         if (currentHelth <= 0)
         {
             Destroy(gameObject);
+
+            AudioManager.instance.PlaySFX(3);
         }
     }
 }
