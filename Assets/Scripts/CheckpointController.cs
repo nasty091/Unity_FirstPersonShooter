@@ -15,7 +15,7 @@ public class CheckpointController : MonoBehaviour
             if(PlayerPrefs.GetString(SceneManager.GetActiveScene().name + "_cp") == cpName)
             {
                 PlayerController.instance.transform.position = transform.position;
-                Debug.Log("Player staring at " + cpName);
+                //Debug.Log("Player staring at " + cpName);
             }
         }
     }

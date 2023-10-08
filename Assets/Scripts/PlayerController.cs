@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     private float bounceAmount;
     private bool bounce;
 
+    public float life = 3;
+
     private void Awake()
     {
         instance = this;
@@ -60,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!UIController.instance.pauseScreen.activeInHierarchy)
+        if (!UIController.instance.pauseScreen.activeInHierarchy && !GameManager.instance.levelEnding)
         {
             //Set up movement but can't change direction
             //moveInput.x = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
@@ -210,6 +212,12 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("onGround", canJump);
             anim.SetFloat("moveSpeed", moveInput.magnitude);
 
+
+            //Hadle life
+            if(PlayerHealthController.instance.currentHealth == 0)
+            {
+                life--;
+            }
         }
     }
 
